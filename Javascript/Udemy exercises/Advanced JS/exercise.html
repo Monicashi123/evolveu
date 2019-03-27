@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+function person(firstname,lastname,age,eyecolor){
+    this.firstname=firstname;
+    this.lastname=lastname;
+    this.age=age;
+    this.eyecolor=eyecolor;
+    this.changeName=changeName;
+	function changeName(name){
+		this.lastname=name	}
+
+
+// =============================================
+}
+myMother=new person("Sally","Rally",48,"green");
+
+console.log(myMother);
+myMother.changeName("beti");
+// myMother.changeAge(50)
+console.log(myMother.lastname,myMother.firstname,myMother.age,myMother.eyecolor);
+console.log(myMother);
+console.log(person);
+
+// console.log(myMother.age);
+
+// <script src="exercise2.js">	
+</script>
+
+
+<script>
+function add(){
+   var buttons = document.getElementById('buttons');
+   buttons.innerHTML += ("<input type='button' value='新1'/>");
+}
+function del(){   
+   var buttons = document.getElementById('buttons');
+   var inputs =buttons.getElementsByTagName('input');
+   if(inputs.length>0){
+      inputs[0].remove();
+   }
+}
+</script>
+</head>
+<body>
+<div id='buttons'>
+</div>
+<input type='button' value='添加' onclick='add()'/>
+<input type='button' value='删除' onclick='del()'/>
+<!-- ============================================== -->
+
+
+
+
+<h1>文件上传</h1>
+		<input type="file" name="file" /><button id='btn'>add more...</button>
+		<div id="file-box">
+		</div>
+		<script>
+			$('btn').addEventListener('click',function(){
+				//创建DIV
+				var fileItem = document.createElement('div');
+				fileItem.className = 'file-item';
+				
+				//创建input元素，type为file,name为file
+				var input = document.createElement('input');
+				input.type = input.name = 'file';
+				fileItem.appendChild(input);
+				
+				//创建按钮
+				var btn = document.createElement('button');
+				btn.textContent = '删除';
+				fileItem.appendChild(btn);
+				
+				$('file-box').appendChild(fileItem);
+				
+				//为按钮设置点击事件(删除)
+				btn.addEventListener('click',function(){
+					//删除当前按钮节点所在父节点
+//					$('file-box').removeChild(this.parentNode);
+					this.parentNode.remove();
+				})
+				
+			});
+			
+			function $(id){
+				return document.getElementById(id);
+			}
+		</script>
+
+		<!-- ======================================== -->
+
+
+ul{
+  list-style:none
+}
+</style>
+<script type="text/javascript">
+window.onload=function(){
+  var main=document.getElementById("main");
+  var bt=document.getElementById("bt");
+  bt.onclick=function(){
+    var len=main.getElementsByTagName("li").length;
+    var oul=main.getElementsByTagName("ul")[0];
+    var oli=document.createElement("li");
+    var input=document.createElement("input");
+    var button=document.createElement("input");
+    input.id="id"+len;
+    input.type="text";
+    button.type="button";
+    button.id="bt"+len;
+    
+    button.value="点击删除";
+    oli.appendChild(input);
+    oli.appendChild(button);
+    oul.appendChild(oli);
+    button.onclick=function(){
+       button.parentNode.remove(button.parentNode);
+    }
+  } 
+}
+</script>
+</head>
+<body>
+<input type="button" value="点击添加一项" id="bt" />
+<div id="main">
+<ul>
+   <li><input type="text"></li>
+</ul>  
+</div>
+</body>
+
+
+
+
+</body>
+</html>

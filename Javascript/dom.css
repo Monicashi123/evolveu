@@ -1,0 +1,65 @@
+.clPanel{
+	background: LightGray;
+	border: ;
+	width: 50%; 
+	min-height: 100px;
+	margin: 20;
+	text-align: center;
+	padding: 30px;
+	border-radius: 10px;
+	padding: 30px;
+	
+	/*margin: 20px;*/
+	/*box-shadow: 10px 10px 15px;*/
+}
+
+.container{
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.leftside{
+	border: solid;
+	border-color: darkgrey;
+	text-align: center;
+	width: 45%;
+	height: 300px;
+	margin-right: 10px;
+	/*overflow: scroll;*/
+	/*overflow-x: scroll;*/
+}
+
+.rightside{
+	border: solid;
+	border-color: darkgrey;
+	text-align: center;
+	width: 45%;
+	height: 300px;
+	font-size: 12px;
+	margin-left: 10px;
+	overflow: scroll;
+}
+
+#rsheader{
+	align-content: center;
+}
+
+.cards{
+	font-size:30px;
+	background-color: red;
+}
+
+.buttons{color:green;
+	border-radius: 10px;
+}
+
+.newcard{
+	margin-top: 10px;
+	margin-bottom: 20px;
+	margin-right: 10px;
+	margin-left: 10px;
+	background-color: lightpink;
+	border-color: black;
+	display: flex;
+	flex-direction: column;
+}
