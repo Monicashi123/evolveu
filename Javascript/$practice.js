@@ -223,22 +223,59 @@ const data = {
 
 // Write the function after this comment ---
 
-function makeEmailObj(emailok){
- return emailok.fname + '.' + emailok.lname + '@evolveu.ca'
+// function makeEmailObj(emailok){
+//  return emailok.fname + '.' + emailok.lname + '@evolveu.ca'
+// }
+// function loopStaff(emailok) {
+//  let loopArr = []
+//    for (i of emailok) {
+//      loopArr.push(makeEmailObj(i))
+//    }
+
+//    console.log("here loopstaff are", emailok)
+//    return loopArr
+//  }
+
+
+
+function loopStaff(arrEmail) {
+	let result = [];
+	
+	function staffEmail(person) {
+		email = makeEmailObj(person);
+		result.push(email)
+		
+	}
+
+	arrEmail.forEach ( staffEmail )
+    return result;
 }
-function loopStaff(emailok) {
- let loopArr = []
-   for (i of emailok) {
-     loopArr.push(makeEmailObj(i))
-   }
-   return loopArr
- }
+
+// staffEmail = loopStaff(data.staff);
+
+
+ // function loopStaff(person) {
+	// 	email = makeEmailObj(person);
+	// 	result.push(email)
+	// 	// console.log('person,email,result', person, email, result)
+	// }
+
+	// arrEmail.forEach ( makeAndPush )
+	// return result;
+
+
+
+// staffEmail = staffEmailforEach(data.staff);
+// console.log('heres what we got using foreach', xuxuxu);
+
+
+
 
 // and before this comment ---
 
 console.log('-----loopStaff')
 const staffEmail = loopStaff(data.staff);
-// console.log(staffEmail);
+console.log(staffEmail);
 assertEquals('Jane.Smith@evolveu.ca', staffEmail[0]);
 assertEquals('Olivia.Notly@evolveu.com', staffEmail[3]);
 assertEquals('Benjamin.Amis@evolveu.ca', staffEmail[6]);
@@ -249,13 +286,16 @@ assertEquals('Benjamin.Amis@evolveu.ca', staffEmail[6]);
 console.log('-----emailForOf')
 const emailForOf = loopWithForOf(data.staff);
 
-function loopWithForOf(emailok) {
+function loopWithForOf(emailOk) {
  let loopArr1 = []
-   for (i of emailok) {
+   for (i of emailOk) {
      loopArr1.push(makeEmailObj(i))
+
    }
+   
    return loopArr1
  }
+
 
 console.log(emailForOf);
 assertEquals('Jane.Smith@evolveu.ca', emailForOf[0]);
@@ -264,15 +304,17 @@ assertEquals('Benjamin.Amis@evolveu.ca', emailForOf[6]);
 
 function loopWithForIn(emailok) {
  let loopArr1 = []
-   for (i of emailok) {
-     loopArr1.push(makeEmailObj(i))
-   }
+   for (i in emailok) {
+     
+     loopArr1.push(makeEmailObj(emailok[i]))
+
+		}
    return loopArr1
  }
 
 console.log('-----emailForIn')
 const emailForIn = loopWithForIn(data.staff);
-console.log(emailForIn);
+// console.log(emailForIn);
 assertEquals('Jane.Smith@evolveu.ca', emailForIn[0]);
 assertEquals('Olivia.Notly@evolveu.com', emailForIn[3]);
 assertEquals('Benjamin.Amis@evolveu.ca', emailForIn[6]);
@@ -281,13 +323,28 @@ assertEquals('Benjamin.Amis@evolveu.ca', emailForIn[6]);
 
 console.log('-----emailWithEach')
 const emailWithEach = loopWithEach(data.staff);
-function loopWithEach(emailok) {
- let loopArr1 = []
-   for (i of emailok) {
-     loopArr1.push(makeEmailObj(i))
-   }
-   return loopArr1
- }
+
+function loopWithEach(arrEmail) {
+	let result = [];
+	
+	function emailWithEach(person) {
+		email = makeEmailObj(person);
+		result.push(email)
+		// console.log('person,email,result', person, email, result)
+		// // return
+	}
+
+	arrEmail.forEach ( emailWithEach )
+    return result;
+}
+
+
+
+   // for (i of emailok) {
+   //   loopArr1.push(makeEmailObj(i))
+   // }
+
+ 
 console.log(emailWithEach);
 assertEquals('Jane.Smith@evolveu.ca', emailWithEach[0]);
 assertEquals('Olivia.Notly@evolveu.com', emailWithEach[3]);
@@ -306,3 +363,4 @@ console.log(emailWithMap);
 assertEquals('Jane.Smith@evolveu.ca', emailWithMap[0]);
 assertEquals('Olivia.Notly@evolveu.com', emailWithMap[3]);
 assertEquals('Benjamin.Amis@evolveu.ca', emailWithMap[6]);
+

@@ -1,0 +1,16 @@
+#container{
+	background: #f0f0f0
+}
+.div {
+	background: linear-gradient(#43C6AC, #F8FFAE);
+  font-family: helvetica;
+
+}
+
+.div {
+	border: 3px solid;width:40% ;
+	background: #f0f0f0;
+}
+.body { 
+  background-color: coral; 
+}

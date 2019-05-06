@@ -25,13 +25,13 @@
 	width: 45%;
 	height: 300px;
 	margin-right: 10px;
-	/*overflow: scroll;*/
-	/*overflow-x: scroll;*/
+	overflow: scroll;
+	overflow-x: scroll;
 }
 
 .rightside{
 	border: solid;
-	border-color: darkgrey;
+	border-color: grey;
 	text-align: center;
 	width: 45%;
 	height: 300px;
@@ -43,23 +43,24 @@
 #rsheader{
 	align-content: center;
 }
-
-.cards{
+ .cards{
 	font-size:30px;
-	background-color: red;
+	background-color: Green;
 }
 
-.buttons{color:green;
-	border-radius: 10px;
+.buttons{color: Blue;
+	background: light grey;
+	border-radius: 100px;
 }
 
 .newcard{
-	margin-top: 10px;
+	margin-top: 20px;
 	margin-bottom: 20px;
-	margin-right: 10px;
-	margin-left: 10px;
+	margin-right: 100px;
+	margin-left: 100px;
 	background-color: lightpink;
 	border-color: black;
 	display: flex;
 	flex-direction: column;
+	
 }
