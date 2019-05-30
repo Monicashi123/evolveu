@@ -11,10 +11,11 @@
 .Button {
     height: 60px;
     width: 60px;
+    background-color: lightblue;
     padding: 5px;
     margin: 5px;
     border-radius: 2px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 16px 16px 0 rgba(150,130,120,0.2), 6px 6px 0 rgba(344,0,0,0.19);
 
 }
 

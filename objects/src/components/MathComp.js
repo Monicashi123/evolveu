@@ -54,21 +54,21 @@ constructor() {
 }
 
 
-    render() {
+    render() { 
       return (
         <div>
             <h4>  “Hello from MathComp” </h4>
-            <input type="number" onChange={this.onChange} id="numA"></input>
+            <input className='inpt' type="number" onChange={this.onChange} id="numA"></input>
 			
-			<input type="number" onChange={this.onChange} id="numB" ></input>
+			<input className='inpt' type="number" onChange={this.onChange} id="numB" ></input>
 			<br/>
-            <button onClick={this.handleClick} className="btn" id="plus">+</button>
-			<button onClick={this.handleClick} className="btn" id="minus">-</button>
-			<button onClick={this.handleClick} className="btn" id="multiply">x</button>
-			<button onClick={this.handleClick} className="btn" id="divide">/</button>
-			<button onClick={this.handleClick} className="clrbtn" id="clear">Clear</button>
+            <button onClick={this.handleClick} className="CreateAcct" id="plus">+</button>
+			<button onClick={this.handleClick} className="CreateAcct" id="minus">-</button>
+			<button onClick={this.handleClick} className="CreateAcct" id="multiply">x</button>
+			<button onClick={this.handleClick} className="CreateAcct" id="divide">/</button>
+			<button onClick={this.handleClick} className="CreateAcct" id="clear">Clear</button>
 			<br/>
-			<input onChange={this.handleClick} className="input" value={this.state.output}></input>
+			<input className='inpt' onChange={this.handleClick}  value={this.state.output}></input>
         </div>
       )
     }

@@ -8,111 +8,148 @@ class AccountsComp extends React.Component {
 	constructor(props) {
         super(props)
         this.state = {
-        	counter: 0,
         	bank:  new Accounts(),
         	acctName:null,
         	Balance:0,
         	maxBalance: 0,
         	minBalance: 0,
+        	totBalance: 0,
         }
         this.handleClick = this.handleClick.bind(this)
-        // this.handleDelete = this.handleDelete.bind(this)
-        this.acctList = this.state.bank.acctList
-        // this.acctID = this.state.bank.acctList[this.state.counter].acctID;
-        
+
     }
 
-	handleClick =(event) =>{
-	       
-	if(event.target.id ==="input1")
-			{
+	handleClick (event) {	       
+		if(event.target.id ==="input1"){
+			if (event.target.value !== null && event.target.value !=='') {
 				this.setState({
 					acctName: event.target.value
-
-				})
-				console.log("this aacount",this.state.acctName)
+				});		
+				console.log("this account",this.state.acctName)			
 			}
-			else if(event.target.id ==="input2")
-			{
-				this.setState({
-					Balance: event.target.value
-				})
-			}
-
-     else {
-		alert('Please select account type !')
-	}     	
+			// alert("please type account name");				
+		 }
+				
+		else if(event.target.id ==="input2") {
+      this.setState({
+  				Balance: event.target.value
+  			})
+		  }	 
     }
 
-    onCreate = ()=> {
+  onDeposit = (id, amount) => {
+    console.log('onDeposit', id)
+    const arr = this.state.bank;
+    arr.depositAccount(id, amount);
+    this.setState({
+      bank: arr,
+    })
+  }
 
+  onWithdraw = (acctID, amount) => {
+    // console.log('onWithdraw', id)
+    const  arr = this.state.bank;
+    arr.withdrawAccount(acctID, amount);
+    this.setState({
+      bank: arr,
+    })
+  }
+
+  onCreate = ()=> {
        	const accountList= this.state.bank;
         accountList.addAccount(this.state.acctName,this.state.Balance)
     	console.log("oncreate log",accountList)
     	this.setState({
             // counter: this.state.counter + 1,
             maxBalance: accountList.getMaxAccount().Balance,
+            minBalance: accountList.getMinAccount().Balance, 
+            totBalance: accountList.getTotalBalance(),           
+      })	     
+	}        
+
+	accountStatus = () => {
+		const accountList= this.state.bank;
+		this.setState({
+            // counter: this.state.counter + 1,
+            maxBalance: accountList.getMaxAccount().Balance,
             minBalance: accountList.getMinAccount().Balance,
-            
+            totBalance: accountList.getTotalBalance(),    
+
         })
-	     
+        console.log("total balance",this.state.totBalance) 
+
 	}
-        
-	handleDelete =(acctID) => {
-         
-       const arr= this.state.bank;        
-       arr.delAccount(acctID);
-       	this.setState({
-	        counter: this.state.counter + 1,
-	        bank: arr
+
+	handleDelete =(acctID) => {         
+   	const accountList= this.state.bank;        
+   	accountList.delAccount(acctID);
+   	this.setState({
+      bank: accountList,
 		})
-                
-    }
+		this.accountStatus()
+        // console.log("from handleDelete after",this.state.bank)                      
+  }
 
-  	render() {
-  		const bankHolder = this.state.bank.acctList;
-  		console.log("bankHolder", bankHolder)
-  		const renderList = bankHolder.map(item => {
-  			return <AccountList key={item.acctID}
-  								bankObj={item}
-  								handleDelete= {this.handleDelete}
-  					/>
+  onChangeName =(id, newName) => {         
+    const accountList= this.state.bank;        
+    accountList.nameAccount(id, newName);
+    this.setState({
+      bank: accountList,
+    })
+    this.accountStatus()
+        // console.log("from handleDelete after",this.state.bank)                      
+  }
 
-  		})
-  		        return (
+
+	render() {
+		const bankHolder = this.state.bank.acctList;
+		console.log("bankHolder", bankHolder)
+		const renderList = bankHolder.map(item => {
+			return <AccountList key={item.acctID}
+								bankObj={item}
+								handleDelete= {this.handleDelete}
+								updateBalance ={this.accountStatus}
+                onDeposit = {this.onDeposit} 
+                onWithdraw = {this.onWithdraw}  
+                handleChangeName = {this.onChangeName}            
+								// handleAccountClick = {this.handleAccountClick}
+					/>
+		})
+
+      return (
 		    <div>
 		    	<h1>  Welcome to RBC Bank </h1>            	
-            	<h3  id="BtnCreateAcct" className="CreateAcct">Start to creat a new account now! </h3>
-            	<div className='cardContainer'>
-            			<div>
-							<p>Maximum : {this.state.maxBalance}</p>
-							<p>Minimum : {this.state.minBalance}</p>
-						</div>
-	            	 
-	            		<div  className= 'typeSelect' >
-	             			
-							<p>Account Name: 
-			                    <input className= 'input'
-			                        id="input1"
-			                        name="acctName" 			                                           
-			                        placeholder="Please enter the acctName" 
-			                        onChange={this.handleClick}
-			                    />	                  
-							</p>	
-							<p>Deposit $$: 
-			                    <input className= 'input'
-			                        id="input2"
-			                        name="deposit" 
-			                        type="number"                        
-			                        placeholder="Please enter the amount" 
-			                        onChange={this.handleClick}
-			                    />	                  
-							</p>	
-							<button id="BtnCreateAcct" onClick={this.onCreate}  className="Button" > Create Another Account </button> 	
-						</div>					
+            	<h3  id="BtnCreateAcct" className="CreateAcct">  Let's creat a new account! </h3>
+            	<div className='cardContainer'>	            	 
+            		<div  className= 'typeSelect' >             			
+						<form>Account Name: 
+		                    <input className= 'input'
+		                        id="input1"
+		                        name="acctName" 		                                                                 
+		                        placeholder="Please enter the acctName" 
+		                        onChange={this.handleClick}		                        
+		                    />
+		                    <br/>	                            											
+							Deposit:
+		                    <input className= 'input'
+		                        id="input2"
+		                        name="deposit" 
+		                        type="number"                        
+		                        placeholder="Please enter the amount" 
+		                        onChange={this.handleClick}  
+		                    />	                   		                    	                  
+	                    </form>                  
+							<button id="BtnCreateAcct" onClick={this.onCreate}  className="Button" > Create New Account </button> 	
 						
-				</div>
+					</div>					
+					<div>	
+						<p>Max Balance: ${this.state.maxBalance}</p>			
+						<p>Min Balance: ${this.state.minBalance}</p>
+						<p>Total: ${this.state.totBalance}</p>
+					</div>
+			</div>
 				{renderList}
+     
 			</div>
 		)
 	}

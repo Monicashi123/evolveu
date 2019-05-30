@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>syntax</title>
+</head>
+<body>
+
+<script type="text/javascript">
+	//numbers
+	var a=8;
+	console.log(a)
+
+	//strings
+
+	var b="abcde"
+	console.log(b)
+
+	var arr =[2,3,5,8]
+	console.log(arr);
+	
+	var	x=5;
+	var y=3;
+		
+console.log(x==y);
+
+var dict=[];
+dict.push({key:"jjg",value:"peters"}),
+console.log(dict[0].key," ",dict[0].value);
+
+if (6<5) 
+	{console.log('true');}
+else {console.log('false');}
+
+//function
+var x=examplefunction(1,4) 
+function examplefunction(a,b) {return a*b;}
+
+var testArray=['a','b','c'];
+testArray.push('f');
+console.log(testArray);
+
+var test1Array=['a','b','c'];
+test1Array.unshift('g')
+console.log(test1Array);
+
+var list=["cat","dog"];
+list[2]="elephant";
+list[3]="tiger";
+console.log(list);
+
+var text = "";
+var cars = ["BMW", "Volvo", "Saab"];
+var i;
+for (i = 0; i < cars.length; i++) { 
+  text += cars[i] + "<br>";
+} 
+console.log(cars);
+
+var cars = ["BMW", "Volvo", "Saab", "Ford"];
+var i = 0;
+var text = "";
+while (cars[i]) {
+  text += cars[i] + "<br>";
+  i++;
+}
+console.log(cars)
+
+//do while
+var text = ""
+var i = 0;
+
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);  
+console.log(text)
+
+var per = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+console.log("I am here 4"); 
+console.log(per); 
+
+var firstNumber = prompt("Please provide the first number"); 
+var secondNumber = prompt("Please provide the second number"); 
+alert(Number(firstNumber) * Number(secondNumber));
+
+</script>
+	 
+</body>
+</html>
+

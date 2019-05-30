@@ -4,10 +4,9 @@ class AccountList extends React.Component {
   constructor(props) {
         super(props);
         console.log("props",props);
-          this.state = {
-          Balance: this.props.bankObj.Balance,
-          acctList:this.props.acctList,
-          
+        this.state = {
+        Balance: this.props.bankObj.Balance,
+        acctList:this.props.acctList,
         };   
         this.handleClick = this.handleClick.bind(this)
         
@@ -16,21 +15,22 @@ class AccountList extends React.Component {
   handleClick(event) {
           
         if (event.target.id === "BtnDep") {
-          let amount = document.getElementById("input").value
-          console.log(amount)
-          this.setState({
+            let amount = document.getElementById("input").value
+            console.log(amount)
+            this.setState({
             Balance: this.props.bankObj.deposit(amount)                                
-           });
+             });
         } else if(event.target.id === "BtnWit") {
             let amount = document.getElementById("input").value
             console.log(amount)
             this.setState({
-                Balance: this.props.bankObj.withdraw(amount)                                
+            Balance: this.props.bankObj.withdraw(amount)                                
             });        
-          }                
-    }
-    
+        } 
 
+        this.setState({acctList: ''})
+    }
+      
   render(props) {  
       
     return(    
@@ -52,8 +52,5 @@ class AccountList extends React.Component {
     )
   }
 }
-
-
-
   
 export default AccountList;

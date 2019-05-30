@@ -10,7 +10,10 @@ import MathComp from "./MathComp"
 import FirstPage from './FirstPage'
 import AccountComp from './AccountComp'
 import AccountsComp from './AccountsComp'
-import './Button.css'
+import CommComp from './CommComp'
+// import './Button.css'
+import ListComp from './ListComp'
+import FIFOComp from './FIFOComp'
 
 class Icons extends Component {
     constructor() {
@@ -22,7 +25,8 @@ class Icons extends Component {
     onPushMe = (e) => {
         if (e.target.id==="logo11"){
             this.setState({
-            myState: ""
+            myState: <FIFOComp/>
+
             })
 
          } else if (e.target.id==="logo12"){
@@ -39,16 +43,21 @@ class Icons extends Component {
          this.setState({
                 myState: <AccountComp />
             }) 
+
+         }else if (e.target.id==="logo14"){
+            this.setState({
+              myState: <AccountsComp/>
+            })
        
-        } else if (e.target.id==="logo14"){
+        } else if (e.target.id==="logo15"){
              this.setState({
-                myState: <AccountsComp/>
+                myState: <CommComp/>
               })
 
-        }else if (e.target.id==="logo15"){
-              // this.setState({
-              //   myState: <AccountsComp/>
-              // })
+        }else if (e.target.id==="logo16"){
+              this.setState({
+                myState: <ListComp/>
+              })
         }              
       }
     
@@ -65,11 +74,9 @@ class Icons extends Component {
             <img src={logo15} id="logo15" className="Button" alt="offical  icon" height="40" width="50" onClick={this.onPushMe}/>
             <img src={logo16} id="logo16" className="Button" alt="search icon" height="40" width="40" onClick={this.onPushMe}/>
 
-            
-                    {this.state.myState}
+            {this.state.myState}
 
-        
-        <div className="App">
+            <div className="App">
             <header className="App-header">
             <img src={require('./logo.svg')} className="App-logo" alt="logo" />
             <p>

@@ -7,8 +7,9 @@ class Accounts {
 	}
 	
 	addAccount(acctName, Balance) {
-		const newAccount = new Account(this.acctID++, acctName, Balance);
+		const newAccount = new Account(this.acctID, acctName, Balance);
 		this.acctList.push(newAccount);		
+		this.acctID=this.acctID+1
 	}
 	
 	findAcctID(i) {
@@ -39,14 +40,13 @@ class Accounts {
 		})		
 	}
 
-
 	getMaxAccount(acctList) {
 		return this.acctList.reduce(function (acct1, acct2) {
 		return ( acct1.Balance > acct2.Balance ? acct1 : acct2 );
 	 	});		
 	}
 	
-	getMinAccount() {
+	getMinAccount(acctList) {
 		return this.acctList.reduce(function (acct1, acct2) {
 		return ( acct1.Balance < acct2.Balance ? acct1 : acct2 );
 	 	});		
@@ -55,14 +55,13 @@ class Accounts {
 	getTotalBalance() {
 		var initialBalance = 0;
 		var TotalBalance = this.acctList.reduce(function (accumulator, account) {
-			// console.log('accumulator', accumulator)
-    		return accumulator + account.Balance;
+		
+    	return accumulator + account.Balance;
 		}, initialBalance)
 		return TotalBalance;
 	
 	}
 	
-
 }
 
 export default Accounts;

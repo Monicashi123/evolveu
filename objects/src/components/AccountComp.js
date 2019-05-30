@@ -45,9 +45,10 @@ constructor() {
             <p>Your balance is: 
                 <button className="Button"> {this.state.Balance} </button> 
 	        </p>
-	        <p>Deposit amount here : 
+	        <p> Deposit   $$ 
                 <input 
                     id="input1"
+                    className='inpt'
                     name="deposit" 
                     type="number"                        
                     placeholder="Please enter the amount" 
@@ -55,9 +56,10 @@ constructor() {
                <button id="btnDep" onClick={this.handleClick} className="Button"> Enter </button> 
 			</p>
 
-            <p>Withdraw amount here:         
+            <p>Withdraw  $$         
                 <input 
                     name="withdraw" 
+                    className='inpt'
                 	id="input2"
                     type="number"                        
                     placeholder=" Please enter the amount : " 
